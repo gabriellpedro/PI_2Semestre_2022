@@ -72,6 +72,7 @@ header{
 }
 
 #books-container{
+    display:inline-block;
     padding: 50px;
 }
 
@@ -117,6 +118,25 @@ header{
 .card-participants{
     font-size: 14px;
     color:#757575
+}
+
+#donation-create-container {
+    padding: 30px !important;
+}
+
+#donation-create-container label{
+    padding: 5px !important;
+    font-weight: bold;
+}
+
+.button{
+    margin-top: 10px;
+}
+
+#donation-create-container input,
+#donation-create-container select,
+#donation-create-container textarea{
+    font-size: 14px;
 }
 
 footer{

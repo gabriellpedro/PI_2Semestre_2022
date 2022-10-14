@@ -3,6 +3,7 @@
 @section('title', 'LPV Doações')
 
 @section('content')
+  
     <div id="search-container" class="col-md-12">
         <h1>Busque um livro</h1>
         <form action="">
@@ -10,20 +11,21 @@
         </form>
     </div>
     <div id="books-container" class="col-md-12">
-            <h2>Livros para ler</h2>
+            <h2>Últimos livros cadastrados</h2>
             <p class="subtitle">Veja os livros que estão chegando</p>
-            <div id="cards-container" class="row"></div>
+            <div id="cards-container" class="row">
                 @foreach ($donations as $donation)
                    <div class="card col-md-3">
-                        <img src="/img/R.jpg" alt="{{ $donation->name }}">
+                        <img src="/img/R.jpg" alt="{{ $donation->title }}">
                         <div class="card-body">
                             <p class="card-date">10/23/32</p>
-                            <h5 class="card-title">{{$donation->name}}</h5>
+                            <h5 class="card-title">{{$donation->title}}</h5>
                             <p class="card-quantidades"></p>
                             <a href="#" class="btn btn-primary">Saber mais</a>
                       
                         </div>
                     </div> 
                 @endforeach
+            </div>
     </div>
 @endsection

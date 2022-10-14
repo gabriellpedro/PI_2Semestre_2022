@@ -21,3 +21,4 @@ Route::get('/events/donation', [EventController::class, 'donation']);
 
 Route::get('contact', [EventController::class, 'contact']);
 
+Route::post('/events', [EventController::class, 'store']);

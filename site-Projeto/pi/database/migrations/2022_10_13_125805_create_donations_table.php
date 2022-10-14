@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('donations', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->integer('qty');
+            $table->string('title');
+            $table->integer('cep');
+            $table->string('phone');
+            $table->string('email');
             $table->text('description');
-            $table->timestamps();
         });
     }
 

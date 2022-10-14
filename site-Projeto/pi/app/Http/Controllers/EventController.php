@@ -23,7 +23,20 @@ class EventController extends Controller
         return view('contact');
     }
 
-    public function products(){
-        return view('products');
+
+    public function store(Request $request){
+
+        $donation = new Donation;
+
+        $donation->title = $request->title;
+        $donation->category = $request->category;
+        $donation->cep = $request->cep;
+        $donation->phone = $request->phone;
+        $donation->email = $request->email;
+        $donation->description = $request->description;
+
+        $donation->save();
+        return redirect('/');
     }
+
 }
