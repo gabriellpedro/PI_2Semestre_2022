@@ -14,6 +14,12 @@
                 <p class="donation-interested"><ion-icon name="people"></ion-icon> x interessados</p>
                 <p class="donation-owner"><ion-icon name="bookmarks"></ion-icon> Dono do livro</p>
                 <a href="#" class="btn btn-primary" id="donation-submit">Desejo o livro</a>
+                <h3>Informações adicionais do livro</h3>
+                <ul id="items-list">
+                    @foreach ($event->items as $item)
+                        <li><ion-icon name="bookmarks"></ion-icon> <span>{{ $item }}</span></li>
+                    @endforeach
+                </ul>
             </div>
             <div class="col-md-12" id="description-container">
                 <h3>Sobre o livro:</h3>

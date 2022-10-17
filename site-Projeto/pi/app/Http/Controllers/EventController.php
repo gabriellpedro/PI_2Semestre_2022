@@ -29,13 +29,14 @@ class EventController extends Controller
         $donation = new Donation;
 
         $donation->title = $request->title;
+        $donation->date = $request->date;
         $donation->category = $request->category;
         $donation->city = $request->city;
         $donation->cep = $request->cep;
         $donation->phone = $request->phone;
         $donation->email = $request->email;
         $donation->description = $request->description;
-
+        $donation->items = $request->items;
 
         //image upload
         if ($request->hasfile('image') && $request->file('image')->isValid()) {

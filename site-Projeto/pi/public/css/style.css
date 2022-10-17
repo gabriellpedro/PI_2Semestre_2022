@@ -101,14 +101,15 @@ header{
 
 #books-container .card{
     flex: 1 1 24%;
-    max-width: 25%;
+    max-width: 18%;
     border-radius: 10px ;
     padding: 0;
     margin: 0.5%;
 }
 
 #books-container img{
-    max-height: 150px;
+    max-height: 210px;
+    min-height: 210px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -200,6 +201,16 @@ header{
     margin: 20px 0;
 }
 
+#items-list{
+    list-style: none;
+    padding-left: 0;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+#items-list li{
+    display: flex;
+}
 footer{
     text-align: center;
     background-color: #ff910b;

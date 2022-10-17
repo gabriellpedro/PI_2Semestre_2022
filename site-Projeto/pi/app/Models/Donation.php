@@ -9,4 +9,10 @@ class Donation extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    protected $casts = [
+        'items' => 'array'
+    ];
+
+    protected $dates = ['date'];
 }
