@@ -31,6 +31,16 @@ header{
     border-color: #c28008 !important;
 }
 
+.msg{
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    width: 100%;
+    margin-bottom: 0px;
+    text-align: center;
+    padding: 10px;
+}
+
 #navbar img{
     width: 40px ;
     margin-left: 10px ;
@@ -90,11 +100,11 @@ header{
 }
 
 #books-container .card{
-    flex: 1 1 0;
+    flex: 1 1 24%;
     max-width: 25%;
     border-radius: 10px ;
     padding: 0;
-    margin: 5px
+    margin: 0.5%;
 }
 
 #books-container img{
@@ -137,6 +147,57 @@ header{
 #donation-create-container select,
 #donation-create-container textarea{
     font-size: 14px;
+}
+
+#image-container,
+#info-container{
+    margin-top: 40px;
+  
+    padding: 16px;
+
+}
+
+.image-fluid{
+    border-radius: 10px;
+    max-width:400px;
+    max-height:400px;
+    min-height: 300px;
+    min-width: 200px;
+}
+
+#info-container{
+    font-size: 36px;
+    font-weight: 900;
+}
+
+#info-container p{
+    margin: 0;
+    font-size: 14px;
+    display: flex;
+}
+
+#info-container h3,
+#description-container h3{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#info-container ion-icon{
+    font-size: 20px;
+    color: #f2a340;
+    margin-right: 5px;
+}
+
+.donation-city,
+.onation-interested,
+.donation-owner{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+}
+
+#donation-submit{
+    margin: 20px 0;
 }
 
 footer{

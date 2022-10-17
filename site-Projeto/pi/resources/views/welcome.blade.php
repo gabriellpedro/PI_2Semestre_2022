@@ -16,13 +16,12 @@
             <div id="cards-container" class="row">
                 @foreach ($donations as $donation)
                    <div class="card col-md-3">
-                        <img src="/img/R.jpg" alt="{{ $donation->title }}">
+                        <img src="/img/donations/{{$donation->image}}" alt="{{ $donation->title }}">
                         <div class="card-body">
-                            <p class="card-date">10/23/32</p>
+                            <p class="card-date">xx</p>
                             <h5 class="card-title">{{$donation->title}}</h5>
                             <p class="card-quantidades"></p>
-                            <a href="#" class="btn btn-primary">Saber mais</a>
-                      
+                            <a href="/events/{{ $donation->id }}" class="btn btn-primary">Saber mais</a>
                         </div>
                     </div> 
                 @endforeach

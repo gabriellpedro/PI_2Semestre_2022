@@ -5,8 +5,12 @@
 @section('content')
     <div id="donation-create-container" class="col-md-6 offset-md-3">
         <h1>Doe seu Livro</h1>
-        <form action="/events" method="POST">
+        <form action="/events" method="POST" enctype="multipart/form-data">
             @csrf
+            <div class="form-group">
+                <label for="image">Imagem do livro</label>
+                <input type="file" id="image" name="image" class="form-control-file">
+            </div>
             <div class="form-group">
                 <label for="title">Livro</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Nome do livro">
@@ -14,6 +18,10 @@
             <div class="form-group">
                 <label for="title">Gênero</label>
                 <input type="text" class="form-control" id="category" name="category" placeholder="Digite o gênero do livro ">
+            </div>
+            <div class="form-group">
+                <label for="title">Cidade</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Informe sua cidade">
             </div>
             <div class="form-group">
                 <label for="title">Cep</label>
