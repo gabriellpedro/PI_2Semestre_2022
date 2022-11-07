@@ -1,45 +1,46 @@
 CREATE DATABASE livraria
 
-
 use livraria
 
 
 create table livro(
-	isbn int unique primary key,
-	genero varchar(15),
-	estoque INT,
-	editora varchar(30),
-	nome varchar(40),
-	autor varchar(40),
-	paginas int
+id_livro INT AUTO_INCREMENT UNIQUE PRIMARY KEY NOT NULL,
+isbn10 VARCHAR(80) UNIQUE,
+isbn13 VARCHAR(80) UNIQUE,
+genero varchar(15),
+editora varchar(30),
+nome varchar(40),
+autor varchar(40),
+paginas int
 );
 
 
 create table usuario(
-	cpf int(11) unique primary key,
-	tipo_usuario varchar(15),
-	nome varchar(40),
-	endereco varchar(40),
-	cep int,
-	contato int,
-	email varchar(50)
+cpf int(11) unique primary key,
+tipo_usuario varchar(15),
+nome varchar(40),
+endereco varchar(40),
+cep int,
+contato int,
+email varchar(50)
 );
+
 
 
 create table livro_usuario(
-	id_controle int auto_increment primary key,
-	data_emprestimo date,
-	data_devolucao date,
-	isbn int,
-	cpf int(11),
-	foreign key (isbn) references livro(isbn),
-	foreign key (cpf) references usuario(cpf)
+id_controle int auto_increment primary key,
+data_emprestimo date,
+data_devolucao date,
+id_livro int,
+cpf int(11),
+foreign key (id_livro) references livro(id_livro),
+foreign key (cpf) references usuario(cpf)
 );
-
 
 
 CREATE TABLE donation(
 	id int AUTO_INCREMENT UNIQUE PRIMARY KEY NOT NULL,
+	isbn VARCHAR(80) NOT NULL UNIQUE,
 	title VARCHAR(40) NOT NULL,
 	city VARCHAR(30) NOT NULL,
 	cep INT NOT NULL,
@@ -51,8 +52,6 @@ CREATE TABLE donation(
 	dateTime DATE NOT NULL,
 	items JSON NOT NULL
 );
-
-
 
 
 CREATE TABLE login(
@@ -70,11 +69,57 @@ CREATE TABLE register(
 	password VARCHAR(20)
 );
 
+INSERT INTO register VALUES(1, 'teste', 'teste', 'teste');
+INSERT INTO donation VALUES(1, 'teste-21321-adwdwa', 'teste', 'teste', 'teste', 'teste', 'dwadwadwadwad', 'uhwagduywagfd7ywagfdguytwagy',
+'dwadwawa', 'F', '2022-01-10', '2');
 
-CREATE TABLE estoque(
-	id_estoque INT AUTO_INCREMENT UNIQUE PRIMARY KEY NOT NULL,
-	numero_estoque INT,
-	titulo_livro VARCHAR(40),
-	isbn INT NOT NULL,
-	FOREIGN KEY (isbn) REFERENCES	livro(isbn)
-);
+
+CREATE VIEW vw_registro AS SELECT * FROM register;
+CREATE VIEW vw_livros AS SELECT id, isbn, title, description, category FROM donation;
+
+SELECT * FROM vw_livros
+SELECT * FROM vw_registro
+
+DROP VIEW vw_livros
+DROP VIEW vw_registro
+
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'boorbook';
+GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost' IDENTIFIED BY 'boorbook';
+
+
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE View_User()
+BEGIN
+	SELECT 
+		cpf AS CPF,
+		nome AS Nome,
+		tipo_usuario AS TipoUsuario,
+		endereco AS Endereco,
+		contato AS Contato,
+		email AS Email
+	FROM 
+		usuario;
+	END $$
+DELIMITER ;
+		
+CALL View_User();
+
+
+DELIMITER $$
+CREATE OR REPLACE FUNCTION Atualiza_Senha(s VARCHAR(20)) RETURNS VARCHAR(20)
+BEGIN
+	DECLARE senha VARCHAR(20);
+	DECLARE novasenha VARCHAR(20);
+	
+	UPDATE register
+	SET PASSWORD = s;
+	
+	SET novasenha = senha;
+	
+	RETURN s;
+END $$
+DELIMITER ;
+
+SELECT * FROM register
+SELECT Atualiza_Senha('589487456856');
+
