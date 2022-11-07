@@ -104,15 +104,18 @@ DELIMITER ;
 		
 CALL View_User();
 
-
 DELIMITER $$
-CREATE OR REPLACE FUNCTION Atualiza_Senha(s VARCHAR(20)) RETURNS VARCHAR(20)
+CREATE OR REPLACE FUNCTION Atualiza_Senha(id INT, s VARCHAR(20)) RETURNS VARCHAR(20)
 BEGIN
+	DECLARE s_id INT;
 	DECLARE senha VARCHAR(20);
 	DECLARE novasenha VARCHAR(20);
 	
+	SELECT Seleciona_ID(id) INTO s_id;
+	
 	UPDATE register
-	SET PASSWORD = s;
+	SET PASSWORD = s
+	WHERE id_register = s_id;
 	
 	SET novasenha = senha;
 	
@@ -121,5 +124,21 @@ END $$
 DELIMITER ;
 
 SELECT * FROM register
-SELECT Atualiza_Senha('589487456856');
+SELECT Atualiza_Senha(2, 'dIEGO BIBA');
 
+
+DELIMITER $$
+CREATE OR REPLACE FUNCTION Seleciona_ID(i INT) RETURNS INT
+BEGIN
+	DECLARE idr INT;
+	
+	SELECT id_register FROM register WHERE id_register = i INTO idr;
+	
+	SET idr = i;
+	
+	RETURN i;
+END $$
+DELIMITER ;
+
+SELECT * FROM register
+SELECT Seleciona_ID(1);
