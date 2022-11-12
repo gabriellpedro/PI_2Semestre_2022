@@ -1,120 +1,170 @@
-CREATE DATABASE livraria
-
-use livraria
-
-
-create table livro(
-id_livro INT AUTO_INCREMENT UNIQUE PRIMARY KEY NOT NULL,
-isbn10 VARCHAR(80) UNIQUE,
-isbn13 VARCHAR(80) UNIQUE,
-genero varchar(15),
-editora varchar(30),
-nome varchar(40),
-autor varchar(40),
-paginas int
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-create table usuario(
-cpf int(11) unique primary key,
-tipo_usuario varchar(15),
-nome varchar(40),
-endereco varchar(40),
-cep int,
-contato int,
-email varchar(50)
-);
+-- Copiando estrutura do banco de dados para books
+CREATE DATABASE IF NOT EXISTS `books` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `books`;
 
+-- Copiando estrutura para tabela books.books
+CREATE TABLE IF NOT EXISTS `books` (
+  `id_book` int(11) NOT NULL AUTO_INCREMENT,
+  `isbn10` varchar(10) DEFAULT NULL,
+  `isbn13` varchar(13) DEFAULT NULL,
+  `category` varchar(15) DEFAULT NULL,
+  `editora` varchar(30) DEFAULT NULL,
+  `name` varchar(40) DEFAULT NULL,
+  `creators` varchar(40) DEFAULT NULL,
+  `pages` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_book`),
+  UNIQUE KEY `isbn10` (`isbn10`),
+  UNIQUE KEY `isbn13` (`isbn13`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
+-- Exportação de dados foi desmarcado.
 
-create table livro_usuario(
-id_controle int auto_increment primary key,
-data_emprestimo date,
-data_devolucao date,
-id_livro int,
-cpf int(11),
-foreign key (id_livro) references livro(id_livro),
-foreign key (cpf) references usuario(cpf)
-);
+-- Copiando estrutura para tabela books.book_user
+CREATE TABLE IF NOT EXISTS `book_user` (
+  `id_control` int(11) NOT NULL AUTO_INCREMENT,
+  `date_boor` date DEFAULT NULL,
+  `date_devolution` date DEFAULT NULL,
+  `id_book` int(11) DEFAULT NULL,
+  `cpf` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_control`),
+  KEY `id_book` (`id_book`),
+  KEY `cpf` (`cpf`),
+  CONSTRAINT `book_user_ibfk_1` FOREIGN KEY (`id_book`) REFERENCES `books` (`id_book`),
+  CONSTRAINT `book_user_ibfk_2` FOREIGN KEY (`cpf`) REFERENCES `user` (`cpf`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
+-- Exportação de dados foi desmarcado.
 
-CREATE TABLE donation(
-	id int AUTO_INCREMENT UNIQUE PRIMARY KEY NOT NULL,
-	isbn VARCHAR(80) NOT NULL UNIQUE,
-	title VARCHAR(40) NOT NULL,
-	city VARCHAR(30) NOT NULL,
-	cep INT NOT NULL,
-	phone VARCHAR(17) NOT NULL,
-	email VARCHAR(50) NOT NULL,
-	description TEXT(250) NOT NULL,
-	category VARCHAR(30) NOT NULL,
-	image CHAR NOT NULL,
-	dateTime DATE NOT NULL,
-	items JSON NOT NULL
-);
+-- Copiando estrutura para tabela books.donation
+CREATE TABLE IF NOT EXISTS `donation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `isbn` varchar(80) NOT NULL,
+  `title` varchar(40) NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `cep` int(11) NOT NULL,
+  `phone` varchar(17) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `description` text NOT NULL,
+  `category` varchar(30) NOT NULL,
+  `image` char(1) NOT NULL,
+  `dateTime` date NOT NULL,
+  `items` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`items`)),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `isbn` (`isbn`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- Exportação de dados foi desmarcado.
 
-CREATE TABLE login(
-	id_usuario INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-	email VARCHAR(50) NOT NULL,
-	password VARCHAR(20) NOT NULL
-);
+-- Copiando estrutura para tabela books.login
+CREATE TABLE IF NOT EXISTS `login` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_user`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- Exportação de dados foi desmarcado.
 
-
-CREATE TABLE register(
-	id_register INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-	user VARCHAR(20) NOT NULL,
-	email VARCHAR(50) NOT NULL,
-	password VARCHAR(20)
-);
-
-INSERT INTO register VALUES(1, 'teste', 'teste', 'teste');
-INSERT INTO donation VALUES(1, 'teste-21321-adwdwa', 'teste', 'teste', 'teste', 'teste', 'dwadwadwadwad', 'uhwagduywagfd7ywagfdguytwagy',
-'dwadwawa', 'F', '2022-01-10', '2');
-
-
-CREATE VIEW vw_registro AS SELECT * FROM register;
-CREATE VIEW vw_livros AS SELECT id, isbn, title, description, category FROM donation;
-
-SELECT * FROM vw_livros
-SELECT * FROM vw_registro
-
-DROP VIEW vw_livros
-DROP VIEW vw_registro
-
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'boorbook';
-GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost' IDENTIFIED BY 'boorbook';
-
-
-DELIMITER $$
-CREATE OR REPLACE PROCEDURE View_User()
+-- Copiando estrutura para procedure books.Procedure_View_User
+DELIMITER //
+CREATE PROCEDURE `Procedure_View_User`()
 BEGIN
 	SELECT 
 		cpf AS CPF,
-		nome AS Nome,
-		tipo_usuario AS TipoUsuario,
-		endereco AS Endereco,
-		contato AS Contato,
+		name AS Nome,
+		type_user AS TipoUsuario,
+		adress AS Endereco,
+		phone AS Contato,
 		email AS Email
 	FROM 
-		usuario;
-	END $$
+		user;
+	END//
 DELIMITER ;
-		
-CALL View_User();
 
+-- Copiando estrutura para tabela books.register
+CREATE TABLE IF NOT EXISTS `register` (
+  `id_register` int(11) NOT NULL AUTO_INCREMENT,
+  `user` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id_register`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DELIMITER $$
-CREATE OR REPLACE FUNCTION Atualiza_Senha(id INT, s VARCHAR(20)) RETURNS VARCHAR(20)
+-- Exportação de dados foi desmarcado.
+
+-- Copiando estrutura para tabela books.stock
+CREATE TABLE IF NOT EXISTS `stock` (
+  `id_stock` int(11) NOT NULL AUTO_INCREMENT,
+  `id_book` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `date_register` date NOT NULL,
+  `date_update` date NOT NULL,
+  PRIMARY KEY (`id_stock`),
+  KEY `id_book` (`id_book`),
+  CONSTRAINT `stock_ibfk_1` FOREIGN KEY (`id_book`) REFERENCES `books` (`id_book`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+-- Exportação de dados foi desmarcado.
+
+-- Copiando estrutura para função books.Update_Password
+DELIMITER //
+CREATE FUNCTION `Update_Password`(id INT, s VARCHAR(20)) RETURNS varchar(20) CHARSET utf8mb4
 BEGIN
 	UPDATE register
 	SET PASSWORD = s
 	WHERE id_register = id;
 	
 	RETURN s;
-END $$
+END//
 DELIMITER ;
 
-SELECT * FROM register
-SELECT Atualiza_Senha(1, 'ABC AAA CC');
+-- Copiando estrutura para tabela books.user
+CREATE TABLE IF NOT EXISTS `user` (
+  `cpf` int(11) NOT NULL,
+  `type_user` varchar(15) DEFAULT NULL,
+  `name` varchar(40) DEFAULT NULL,
+  `adress` varchar(40) DEFAULT NULL,
+  `cep` int(11) DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`cpf`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Exportação de dados foi desmarcado.
+
+-- Copiando estrutura para trigger books.TG_AFTER_INSERT
+SET @OLDTMP_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION';
+DELIMITER //
+CREATE TRIGGER TG_AFTER_INSERT AFTER INSERT 
+	ON book_user
+	FOR EACH ROW
+	BEGIN
+		DECLARE contador INT;
+		SELECT COUNT(*) INTO contador FROM stock WHERE id_book = NEW.id_book;
+		IF contador = 0 THEN
+			INSERT INTO stock(id_book, quantity, date_register, date_update) 
+			VALUES(NEW.id_book, 1, CURDATE(), CURDATE());
+		ELSEIF contador > 0 THEN
+			UPDATE stock
+			SET quantity = quantity + 1
+			WHERE id_book = NEW.id_book;
+		END IF; 
+ 	END//
+DELIMITER ;
+SET SQL_MODE=@OLDTMP_SQL_MODE;
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
