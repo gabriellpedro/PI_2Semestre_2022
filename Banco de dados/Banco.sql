@@ -27,7 +27,7 @@ create table books(
 	name varchar(40),
 	creators varchar(40),
 	pages INT
-);
+); 
 
 
 CREATE TABLE stock(
