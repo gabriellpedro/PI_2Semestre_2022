@@ -1,11 +1,15 @@
+-- --------------------------------------------------------
+-- Servidor:                     127.0.0.1
+-- Versão do servidor:           10.4.13-MariaDB - mariadb.org binary distribution
+-- OS do Servidor:               Win64
+-- HeidiSQL Versão:              11.0.0.5919
+-- --------------------------------------------------------
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
 -- Copiando estrutura do banco de dados para books
@@ -48,6 +52,7 @@ CREATE TABLE IF NOT EXISTS `book_user` (
 -- Copiando estrutura para tabela books.donation
 CREATE TABLE IF NOT EXISTS `donation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_control` int(11) NOT NULL,
   `isbn` varchar(80) NOT NULL,
   `title` varchar(40) NOT NULL,
   `city` varchar(30) NOT NULL,
@@ -60,7 +65,9 @@ CREATE TABLE IF NOT EXISTS `donation` (
   `dateTime` date NOT NULL,
   `items` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`items`)),
   PRIMARY KEY (`id`),
-  UNIQUE KEY `isbn` (`isbn`)
+  UNIQUE KEY `id_control` (`id_control`),
+  UNIQUE KEY `isbn` (`isbn`),
+  CONSTRAINT `donation_ibfk_1` FOREIGN KEY (`id_control`) REFERENCES `book_user` (`id_control`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Exportação de dados foi desmarcado.
@@ -163,8 +170,6 @@ CREATE TRIGGER TG_AFTER_INSERT AFTER INSERT
 DELIMITER ;
 SET SQL_MODE=@OLDTMP_SQL_MODE;
 
-/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
