@@ -1,22 +1,6 @@
-CREATE DATABASE books
+CREATE DATABASE books;
 
-use books
-
-/*DROP TABLE books;
-DROP TABLE stock;
-DROP TABLE user;
-DROP TABLE book_user;
-*/
-
-
-/*INSERT INTO books VALUES(3,3,3, "acao", "aaaaaa", "adwad", "abbba", 111);
-INSERT INTO user VALUES(1111111111, "dawd", "dwadwad", "dwadwa", 1111, 21321321, "dwadwada");
-INSERT INTO book_user(date_boor, date_devolution, id_book, cpf) VALUES(CURDATE(), CURDATE(), 3, 1111111111);
-
-INSERT INTO books VALUES(4,4,4, "acao", "aaaaaa", "adwad", "abbba", 111);
-INSERT INTO user VALUES(2222222222, "dawd", "dwadwad", "dwadwa", 1111, 21321321, "dwadwada");
-INSERT INTO book_user(date_boor, date_devolution, id_book, cpf) VALUES(CURDATE(), CURDATE(), 4, 2222222222);
-*/
+use books;
 
 create table books(
 	id_book INT AUTO_INCREMENT UNIQUE PRIMARY KEY NOT NULL,
@@ -27,7 +11,7 @@ create table books(
 	name varchar(40),
 	creators varchar(40),
 	pages INT
-); 
+);
 
 
 CREATE TABLE stock(
@@ -62,9 +46,9 @@ create table book_user(
 );
 
 
-
 CREATE TABLE donation(
 	id int AUTO_INCREMENT UNIQUE PRIMARY KEY NOT NULL,
+	id_control int UNIQUE NOT NULL,
 	isbn VARCHAR(80) NOT NULL UNIQUE,
 	title VARCHAR(40) NOT NULL,
 	city VARCHAR(30) NOT NULL,
@@ -75,7 +59,8 @@ CREATE TABLE donation(
 	category VARCHAR(30) NOT NULL,
 	image CHAR NOT NULL,
 	dateTime DATE NOT NULL,
-	items JSON NOT NULL
+	items JSON NOT NULL,
+	FOREIGN KEY (id_control) REFERENCES book_user(id_control)
 );
 
 
