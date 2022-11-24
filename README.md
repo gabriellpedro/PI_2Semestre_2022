@@ -3,7 +3,7 @@
  <h3>Esse projeto tem o enfoque em obtenção de nota para as disciplinas de: <br></h3>
   • Engenharia de Software II (disciplina satélite);<br>
   • Desenvolvimento Web II;<br>
-  • Banco de dados - Relacional.<br>
+  • Banco de Dados - Relacional.<br>
     
  <h4>Esse projeto tem também, o foco em desenvolvimento individual e coletivo na linguagem de PHP, SQL, documentação de um software e como evidencia de nossa evolução e nosso trabalho para futuros fins profissinais. <br></h4>
  
