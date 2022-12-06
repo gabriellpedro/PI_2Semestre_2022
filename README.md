@@ -50,3 +50,17 @@ Com o objetivo definido, buscamos uma solução que contribua tanto para com a c
 
 ## Nossa Documentação
 Para acessar nossa documentação por completo, clique aqui: [Documentação por Completo](https://github.com/gabriellpedro/PI_2Semestre_2022/tree/main/Documenta%C3%A7%C3%A3o);
+
+## Contrubuidores
+
+<table>
+  <tr>
+    <td align="center"><a href="https://rocketseat.com.br"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102560434?v=4" width="100px;" alt=""/><br /><sub><b>Gabriel Pedro</b></sub></a><br /><a href="https://github.com/gabriellpedro" title="Rocketseat">🚀</a></td>
+    <td align="center"><a href="https://rocketseat.com.br"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102335240?v=4" width="100px;" alt=""/><br /><sub><b>Felipe Vieira</b></sub></a><br /><a href="https://github.com/Felipe-Vieira-03" title="Rocketseat">🚀</a></td>
+    <td align="center"><a href="https://rocketseat.com.br"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/84945241?v=4" width="100px;" alt=""/><br /><sub><b>Mateus Favetta</b></sub></a><br /><a href="https://github.com/teuzfavetta" title="Rocketseat">🚀</a></td>
+    <td align="center"><a href="https://rocketseat.com.br"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102560506?v=4" width="100px;" alt=""/><br /><sub><b>Luiza Pascuotte</b></sub></a><br /><a href="https://github.com/LuizaPascuotte" title="Rocketseat">🚀</a></td>
+    <td align="center"><a href="https://rocketseat.com.br"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/102560265?v=4" width="100px;" alt=""/><br /><sub><b>Leandro Alves</b></sub></a><br /><a href="https://github.com/Attenuare" title="Rocketseat">🚀</a></td>
+    <td align="center"><a href="https://rocketseat.com.br"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/90121713?v=4" width="100px;" alt=""/><br /><sub><b>Diego Wiltler</b></sub></a><br /><a href="https://github.com/Diego-Eduardo-Wiltler" title="Rocketseat">🚀</a></td>
+    <td align="center"><a href="https://rocketseat.com.br"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/80418636?v=4" width="100px;" alt=""/><br /><sub><b>Klayvert Alves</b></sub></a><br /><a href="https://github.com/Klayvert2003" title="Rocketseat">🚀</a></td>
+  </tr>
+</table>
