@@ -324,6 +324,12 @@ header{
 .dashboard-donations-container th{
     width: 25%;
 }
+
+.dashboard-donations-container form {
+    display: inline-block;
+
+}
+
 footer{
     text-align: center;
     background-color: #ff910b;
@@ -338,8 +344,15 @@ footer p{
     margin-bottom: 0;
 }
 
+.inline-flex{
+    background-color: #ff910b !important;
+}
 
-
+.roberto{
+    display: flex;
+    justify-content: space-between !important;
+    margin-left: 40px !important;
+}
 
 
 

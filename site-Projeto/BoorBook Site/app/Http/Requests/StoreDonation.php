@@ -45,7 +45,7 @@ class StoreDonation extends FormRequest
             'author.min' => 'Este nome é curto demais.',
             'author.max' => 'Este nome é longo demais.',
             'category.required' => 'Este campo é obrigatório.',
-            
+            'item.null',
         ];
     }
 }

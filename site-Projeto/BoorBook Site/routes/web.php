@@ -29,4 +29,5 @@ Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('aut
 
 Route::post('donation',[App\Http\Controllers\RegisterController::class, 'store']);
 
-Route::delete('events/{id}',[EventController::class, 'destroy']);
+Route::delete('donations/{id}',[EventController::class, 'destroy']);
+
