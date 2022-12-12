@@ -48,10 +48,10 @@ Com o objetivo definido, buscamos uma solução que contribua tanto para com a c
  •	Nosso sistema gerencia o empréstimo dos livros até antes do frete, pois o frete e a forma de envio deve ser combinado entre o emprestante e o emprestador; <br>
  •	Nosso sistema não compra livros novos para a adição no sistema, apenas gerencia os livros que são cedidos para empréstimo, podendo solicitar para os usuários livros novos; <br>
 
-## Nossa Documentação
+## Documentação
 Para acessar nossa documentação por completo, clique aqui: [Documentação por Completo](https://github.com/gabriellpedro/PI_2Semestre_2022/tree/main/Documenta%C3%A7%C3%A3o);
 
-## Contrubuidores
+## Contribuidores
 
 <table>
   <tr>
