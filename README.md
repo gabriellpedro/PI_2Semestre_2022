@@ -1,5 +1,5 @@
 # PI_2Semestre_2022 - BoorBook
-
+![alt text](https://github.com/gabriellpedro/PI_2Semestre_2022/blob/main/Documentação/Logotipo/banner_boorbook.png)
  <h3>Esse projeto tem o enfoque em obtenção de nota para as disciplinas de: <br></h3>
   • Engenharia de Software II (disciplina satélite);<br>
   • Desenvolvimento Web II;<br>
